@@ -6,10 +6,12 @@
 运行前，请进行一次 **pod install**
 
 - 实现原理
-核心主要是手势点击响应方法
-```- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event { 
 
+ 核心主要是手势点击响应方法
+```
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event { 
 }
+
 ```
 首先自定义一个tableView,我这里是创建了一个叫TableVile 的类，啥也不用做，只需要在 TableView.m 重写上面的方法：
 ```
@@ -17,11 +19,15 @@
 偏移量小于零时不让tableView响应点击事件
 */
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
- if (point.y<0) {
- return nil;
+  if (point.y<0) {
+   
+    return nil;
+ 
  } else {
- return [super hitTest:point withEvent:event];
- }
+  
+  return [super hitTest:point withEvent:event];
+  
+  }
 }
 ```
 ViewController.m文件下，@interface 声明代码 我这里是加了一组标注，后面有其他需求的也可自己修改
@@ -64,8 +70,10 @@ ViewController.m文件下，@interface 声明代码 我这里是加了一组标�
 
     //保证地图图标始终在可见区域的中心
     [self showAnnotations:self.tableView];
+```
+    
 地图标注的动态修改方法
-
+```
 /**
  使地图的标注点始终显示在地图可见区域的中心
  */
@@ -121,4 +129,4 @@ ViewController.m文件下，@interface 声明代码 我这里是加了一组标�
 }
 ```
 - 最后说明
-不是很擅长写东西，写得比较粗糙，具体的可以参考 demo
+ 不是很擅长写东西，写得比较粗糙，具体的可以参考 demo
